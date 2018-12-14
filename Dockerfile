@@ -39,5 +39,12 @@ RUN composer -v
 RUN echo 'Installation of Composer : Done'
 
 
+RUN echo 'Installation of Symfony requierements : Start'
+RUN apt-get install -y php7.2-xml \
+    php7.2-curl \
+    php7.2-mbstring \
+    php7.2-zip
+RUN echo 'Installation of Symfony requierements : Done'
+
 #RUN apt autoremove
 #RUN rm -rf /etc/apt/cache/*
