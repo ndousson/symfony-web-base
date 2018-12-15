@@ -8,6 +8,10 @@ LABEL maintainer="Nicolas DOUSSON"
 
 RUN apt-get update
 
+RUN echo 'Installaton of usefull librairies : Start'
+RUN apt-get install unzip
+RUN echo 'Installaton of usefull librairies : Done'
+
 
 RUN echo 'Installaton of Apache : Start'
 RUN apt-get install -y apache2
@@ -28,6 +32,12 @@ RUN apt-get update
 RUN apt-get install -y php7.2
 RUN php -v
 RUN echo 'Installation of PHP v7.2 : Done'
+
+
+RUN echo 'Installation of NodeJS : Start'
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
+RUN apt-get install -y nodejs
+RUN echo 'Installation of NodeJS : Done'
 
 
 RUN echo 'Installation of Yarn : Start'
