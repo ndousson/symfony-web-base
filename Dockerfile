@@ -9,7 +9,8 @@ LABEL maintainer="Nicolas DOUSSON"
 RUN apt-get update
 
 RUN echo 'Installaton of usefull librairies : Start'
-RUN apt-get install unzip
+RUN apt-get install -y unzip \ 
+    gnupg
 RUN echo 'Installaton of usefull librairies : Done'
 
 
@@ -41,7 +42,6 @@ RUN echo 'Installation of NodeJS : Done'
 
 
 RUN echo 'Installation of Yarn : Start'
-RUN apt-get install -y gnupg
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN sh -c 'echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list'
 RUN apt-get update
