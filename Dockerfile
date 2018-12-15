@@ -1,4 +1,4 @@
-FROM httpd:latest
+FROM debian:stretch-slim
 
 
 LABEL version="1.0"
@@ -7,6 +7,13 @@ LABEL maintainer="Nicolas DOUSSON"
 
 
 RUN apt-get update
+
+
+RUN echo 'Installaton of Apache : Start'
+RUN apt-get install -y apache2
+RUN a2enmod rewrite
+RUN service apache2 restart
+RUN echo 'Installaton of Apache : Done'
 
 
 RUN echo 'Installation of Sury package for PHP 7.0+ : Start'
@@ -35,7 +42,7 @@ RUN echo 'Installation of Yarn : Done'
 
 RUN echo 'Installation of Composer : Start'
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-RUN composer -v
+RUN composer --version
 RUN echo 'Installation of Composer : Done'
 
 
@@ -48,3 +55,7 @@ RUN echo 'Installation of Symfony requierements : Done'
 
 #RUN apt autoremove
 #RUN rm -rf /etc/apt/cache/*
+
+WORKDIR /var/www/
+
+ENTRYPOINT [ "apache2ctl", "-D", "FOREGROUND" ]
