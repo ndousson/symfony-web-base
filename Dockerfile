@@ -53,9 +53,9 @@ RUN apt-get install -y php7.2-xml \
     php7.2-zip
 RUN echo 'Installation of Symfony requierements : Done'
 
-#RUN apt autoremove
-#RUN rm -rf /etc/apt/cache/*
 
-WORKDIR /var/www/
+WORKDIR /var/www/html
+EXPOSE 80
 
-ENTRYPOINT [ "apache2ctl", "-D", "FOREGROUND" ]
+
+CMD [ "apache2ctl", "-D", "FOREGROUND" ]
