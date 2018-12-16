@@ -16,7 +16,7 @@ RUN echo 'Installaton of usefull librairies : Done'
 
 RUN echo 'Installaton of Apache : Start'
 RUN apt-get install -y apache2
-RUN a2enmod rewrite
+RUN a2enmod rewrite env
 RUN service apache2 restart
 RUN echo 'Installaton of Apache : Done'
 
