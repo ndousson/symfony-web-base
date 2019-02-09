@@ -8,7 +8,7 @@ LABEL maintainer="Nicolas DOUSSON"
 
 RUN apt-get update
 
-RUN echo 'Installaton of usefull librairies : Start'
+RUN echo 'Installation of usefull librairies : Start'
 RUN apt-get install -y unzip \ 
     gnupg
 RUN echo 'Installaton of usefull librairies : Done'
